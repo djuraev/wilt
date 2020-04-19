@@ -4,7 +4,7 @@
 
 ## Categories
 
-[Problem Solving](https://github.com/djuraev/wilt/tree/master/problems)
+[OJ Problems](https://github.com/djuraev/wilt/tree/master/problems)
 
 [Algorithms](https://github.com/djuraev/wilt/tree/master/algo)
 
