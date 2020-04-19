@@ -4,10 +4,9 @@
 
 ## Categories
 
-*[Problem Solving] (#leetcode)
+*[Problem Solving] (https://github.com/djuraev/wilt/tree/master/problems)
 
-*[Problem Solving] (#hackerrank)
+*[Algorithms](https://github.com/djuraev/wilt/tree/master/algo)(https://github.com/djuraev/wilt/tree/master/algo)
 
-*[Algorithms]
+*[Data Structures](https://github.com/djuraev/wilt/tree/master/ds)(https://github.com/djuraev/wilt/tree/master/ds)
 
-*[Data Structures]
