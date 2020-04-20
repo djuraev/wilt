@@ -1,0 +1,29 @@
+7. Reverse Integer
+
+
+Given a 32-bit signed integer, reverse digits of an integer.
+
+Example 1:
+
+Input: 123
+Output: 321
+
+Example 2:
+
+Input: -123
+Output: -321
+********************************************************
+ public int reverse(int x) {
+	if(x == 0)
+		return 0;
+	long reversed = 0;
+	while(x != 0)
+	{
+		int lastDigit = x%10;
+		reversed = reversed*10 + lastDigit;
+		x /= 10;
+		if(reversed > Integer.MAX_VALUE || reversed < Integer.MIN_VALUE)
+			return 0;
+	}
+	return (int)reversed;
+}
