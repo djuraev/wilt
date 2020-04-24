@@ -1,0 +1,63 @@
+215. Kth Largest Element in an Array
+Medium
+
+Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
+
+Example 1:
+
+Input: [3,2,1,5,6,4] and k = 2
+Output: 5
+
+Example 2:
+
+Input: [3,2,3,1,2,4,5,5,6] and k = 4
+Output: 4
+
+*****************************************
+
+public int findKthLargest(int[] nums, int k) {
+	if(nums == null || nums.length == 0)
+		return Integer.MIN_VALUE;
+	int left = 0, right = nums.length-1;
+	int kIndex = right - k+1;
+	int pivotIndex = 0;
+	while(left < right)
+	{
+		 pivotIndex = partition(nums, left, right);
+		if(pivotIndex == kIndex)
+		{
+			return nums[pivotIndex];
+		}
+		else if(pivotIndex > kIndex)
+		{
+			right = pivotIndex - 1;
+		}
+		else
+		{
+			left = pivotIndex + 1;
+		}            
+	}
+	return nums[left];
+}
+private int partition(int[] nums, int left, int right)
+{
+	int pivot = nums[right];
+	int pivotIndex = left;
+	for(int i=left; i<right; i++)
+	{
+		if(nums[i] <= pivot)
+		{
+			swap(nums, pivotIndex, i);
+			pivotIndex++;
+		}
+	}
+	swap(nums, pivotIndex, right);
+	return pivotIndex;
+}
+private void swap(int[] nums, int i, int j){
+	if(i == j)
+		return;
+	int tmp = nums[i];
+	nums[i] = nums[j];
+	nums[j] = tmp;
+}
