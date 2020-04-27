@@ -1,0 +1,85 @@
+Symmetric Tree
+
+Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+
+For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
+
+    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3
+
+ 
+
+But the following [1,2,2,null,3,null,3] is not:
+
+    1
+   / \
+  2   2
+   \   \
+   3    3
+
+ 
+
+Follow up: Solve it both recursively and iteratively.
+**************************************************************************
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+       if(root == null)
+           return true;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root.left);
+        queue.add(root.right);
+        while(!queue.isEmpty())
+        {
+            TreeNode t1 = queue.remove();
+            TreeNode t2 = queue.remove();
+            if(t1 == null && t2 == null)
+                continue;
+            if(t1 ==null || t2 == null)
+                return false;
+            if(t1.val != t2.val)
+                return false;
+            queue.add(t1.left);
+            queue.add(t2.right);
+            queue.add(t1.right);
+            queue.add(t2.left);
+        }
+        return true;
+    }
+    private boolean isSame(TreeNode node1, TreeNode node2)
+    {
+        if(node1 == null && node2 == null)
+            return true;
+        if(node1 == null || node2 == null)
+            return false;
+        if(node1.val == node2.val)
+        {
+            return isSame(node1.left, node2.right) && isSame(node1.right, node2.left);
+        }
+        return false;
+    }
+    private void getInorder(TreeNode root, StringBuilder sb)
+    {
+        if(root == null)
+        {
+            sb.append("null,");
+            return;
+        }
+        sb.append(root.val).append(",");
+        getInorder(root.left, sb);        
+        getInorder(root.right, sb);
+    }
+    private void getInorderReverse(TreeNode root, StringBuilder sb)
+    {
+        if(root == null)
+        {
+            sb.append("null,");
+            return;
+        }
+        sb.append(root.val).append(",");
+        getInorderReverse(root.right, sb);        
+        getInorderReverse(root.left, sb);        
+    }
+}
