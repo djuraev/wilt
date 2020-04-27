@@ -1,0 +1,14 @@
+After 2 hours of attempting to solve this problem for my current, I got working solution.
+Lets say there is list (<ul>) and it has rows (<li>), and we need to change/update last row of it.
+This functionality is need for showing downloading percentage for terminal window UI element.
+
+I have updateLastLineOnTerminal function;
+lstLogMessages - my Log Messages List
+
+
+function updateLastLineOnTerminal(message)
+{
+	let newLine ='<span style="color: blue;">'+message+'</span>';
+    let content = document.getElementById('lstLogMessages');
+    content.lastElementChild.innerHTML = newLine;
+}
