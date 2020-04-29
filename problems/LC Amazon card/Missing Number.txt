@@ -1,0 +1,19 @@
+public int missingNumber(int[] nums) {
+       /* int max = 0;
+        int sum = 0;
+        for(int n: nums)
+        {
+            sum += n;
+            max = Math.max(max, n);
+        }
+        int n = nums.length;
+        int realSum = (n*(n+1))/2;
+        return realSum - sum;*/
+        int result = nums.length;
+        int lengthOfSum = nums.length;
+        for(int i=0; i<lengthOfSum; i++)
+        {
+            result ^= nums[i] ^ i;
+        }
+        return result;
+    }

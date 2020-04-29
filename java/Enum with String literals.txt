@@ -1,0 +1,53 @@
+Using Enum values as String literals
+
+Option One: 
+Use the built-in name() on an enum. This is perfectly fine if you don't need any special naming format.
+
+String name = Modes.mode1.name(); // Returns the name of this enum constant, exactly as declared in its enum declaration.
+
+
+Option Two: 
+Add overriding properties to your enums if you want more control
+
+public enum Modes {
+    mode1 ("Mode 1"),
+    mode2 ("Mode 2"),
+    mode3 ("Mode 3");
+
+    private final String name;       
+
+    private Modes(String s) {
+        name = s;
+    }
+
+    public boolean equalsName(String otherName) {
+        // (otherName == null) check is not needed because name.equals(null) returns false 
+        return name.equals(otherName);
+    }
+
+    public String toString() {
+       return this.name;
+    }
+}
+
+Option Three: 
+Use static finals instead of enums:
+
+public final class Modes {
+
+    public static final String MODE_1 = "Fancy Mode 1";
+    public static final String MODE_2 = "Fancy Mode 2";
+    public static final String MODE_3 = "Fancy Mode 3";
+
+    private Modes() { }
+}
+
+Option Four: 
+Interfaces have every field public, static and final:
+
+public interface Modes {
+
+    String MODE_1 = "Fancy Mode 1";
+    String MODE_2 = "Fancy Mode 2";
+    String MODE_3 = "Fancy Mode 3";  
+}
