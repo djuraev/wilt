@@ -24,3 +24,30 @@
                                          .uri("http://your.service/endpoint/{id}", id)
                                          .retrieve()
                                          .bodyToFlux(Entity.class); 
+
+
+## 04-06
+* Read values/properties from .yml file Java Spring Framework
+     * Create ```.yml ``` file, in my case I created ```application-messages.yml``` for project exceptions messages.
+     ```
+     exception:
+          messages:
+               "A" : "Message 1"
+               "B" : "Message 2"
+               ..  : ...
+     ```
+     * Add your custom @Configuration class
+```
+@Configuration
+@PropertySource(value = "application-messages.yml")
+@ConfigurationProperties("exception")
+class NotificationMessages {
+     Map<String, String> messages = new HashMap<>();
+
+     NotificationMessages(){
+          this.messages = new HashMap<>();
+     }
+     .........
+}
+```
+     
